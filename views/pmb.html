@@ -1,0 +1,54 @@
+{% extends "main.html" %}
+{% block content %}
+  <h2 class="mb-4">Formulir Penerimaan Mahasiswa Baru (PMB)</h2>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-info">
+        {% for msg in messages %}
+          <div>{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <form action="/pmb" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="nama" class="form-label">Nama</label>
+      <input type="text" name="nama" id="nama" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email" id="email" class="form-control" required>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+        <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+        <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="asal_sma" class="form-label">Asal SMA</label>
+      <input type="text" name="asal_sma" id="asal_sma" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="no_hp" class="form-label">No HP</label>
+      <input type="tel" name="no_hp" id="no_hp" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="foto" class="form-label">Upload Foto</label>
+      <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Daftar Sekarang</button>
+  </form>
+{% endblock %}
